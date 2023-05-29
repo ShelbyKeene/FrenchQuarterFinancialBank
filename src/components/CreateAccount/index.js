@@ -1,6 +1,7 @@
 import React, { useState } from "react";
+import "./index.css";
 
-function CreateAccount({ users }) {
+function CreateAccount({ users, setUsers }) {
 console.log(users,"Create Component")
   const [show, setShow] = useState(true);
   const [status, setStatus] = useState("");
@@ -25,12 +26,12 @@ console.log(users,"Create Component")
     if (!validate(email, "email")) return;
     if (!validate(password, "password")) return;
     if (firstName.search(/[A-Z]/) === -1) {
-      alert("Name Needs UpperCase");
+      alert("First Name Needs UpperCase");
       return null;
     }
 
     if (lastName.search(/[A-Z]/) === -1) {
-      alert("Name Needs UpperCase");
+      alert("Last Name Needs UpperCase");
       return null;
     }
 
@@ -47,7 +48,9 @@ console.log(users,"Create Component")
       alert("Password to short needs 8 characters");
       return null;
     }
-    users.push({ firstName, lastName, email, password });
+    const newUser= {firstName, lastName, email, password};
+    const updatedUsers = [...users, newUser];
+    setUsers(updatedUsers);
     setShow(false);
   }
 
@@ -61,8 +64,9 @@ console.log(users,"Create Component")
 
   return (
     <div status={status}>
+
       {show ? (
-        <>
+        <div>
           First Name
           <br />
           <input
@@ -114,7 +118,7 @@ console.log(users,"Create Component")
           >
             Create Account
           </button>
-        </>
+        </div>
       ) : (
         <>
           <h5>Success</h5>

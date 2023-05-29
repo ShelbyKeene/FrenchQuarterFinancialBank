@@ -12,7 +12,7 @@ import AllData from "./components/AllData";
 
 function App() {
   const[users, setUsers] = useState([{ firstName:"Betty", lastName:"White", email:"BettyWhite@famous.com", password:"ToughTits"}])
-  
+  const [totalState, setTotalState] = useState(0);
   
   
   return (
@@ -23,8 +23,8 @@ function App() {
     <Route path="/" element={<Home/>}/>
     {/* <Route path="/login" element={<Login/>}/> */}
     <Route path="/create-account" element={<CreateAccount users={users} setUsers={setUsers} />}/>
-    <Route path="/deposit" element={<Deposit/>}/>
-    <Route path="/withdrawl" element={<Withdrawl/>}/>
+    <Route path="/deposit" element={<Deposit totalState={totalState} setTotalState={setTotalState}/>}/>
+    <Route path="/withdrawl" element={<Withdrawl totalState={totalState} setTotalState={setTotalState}/>}/>
     {/* <Route path="/balance" element={<Balance/>}/> */}
     <Route path="/all-data" element={<AllData users={users} />}/>
   </Routes>
