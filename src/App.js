@@ -11,17 +11,22 @@ import AllData from "./components/AllData";
 
 
 function App() {
+  const[users, setUsers] = useState([{ firstName:"Betty", lastName:"White", email:"BettyWhite@famous.com", password:"ToughTits"}])
+  
+  
+  
   return (
+
     <div>
     <NavBar/>
     <Routes>
     <Route path="/" element={<Home/>}/>
     {/* <Route path="/login" element={<Login/>}/> */}
-    <Route path="/create-account" element={<CreateAccount/>}/>
+    <Route path="/create-account" element={<CreateAccount users={users} setUsers={setUsers} />}/>
     <Route path="/deposit" element={<Deposit/>}/>
     <Route path="/withdrawl" element={<Withdrawl/>}/>
     {/* <Route path="/balance" element={<Balance/>}/> */}
-    <Route path="/all-data" element={<AllData/>}/>
+    <Route path="/all-data" element={<AllData users={users} />}/>
   </Routes>
     </div>
   );
